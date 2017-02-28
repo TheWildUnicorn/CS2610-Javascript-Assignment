@@ -7,3 +7,7 @@
  * 3. Display to insert the result in a comment after the selection. (Cmd-L)
  */
 
+document.title = "Jaydon's Big Mathinessness";
+
+var primFibDiv = document.createElement("div");
+document.body.appendChild(primFibDiv);
