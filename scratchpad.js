@@ -24,7 +24,7 @@ document.body.appendChild(primTriDiv);
 
 
 //run all three sequences
-// fib(11, primFibDiv);
+fib(11, primFibDiv);
 // pell(11, primPellDiv);
 // fib(11, primTriDiv);
 
@@ -52,10 +52,10 @@ var recursiveFib = function(n) {
     div.appendChild(p)
   } 
   else{
-    var left = fibHelper(n - 1);
+    var left = recursiveFib(n - 1);
     var clas = left.html.getAttribute('class');
     left.html.setAttribute('class', clas + ' fib-left');
-    var right = fibHelper(n - 2);
+    var right = recursiveFib(n - 2);
     clas = right.html.getAttribute('class');
     right.html.setAttribute('class', clas + ' fib-right');
     value = left.value + right.value;
@@ -98,3 +98,16 @@ function recursivePell(n){
     
   }
 }
+
+/*
+Exception: ReferenceError: fibHelper is not defined
+recursiveFib@file:///users/Jaydon/Desktop/javascriptAssignment/scratchpad.js:55:9
+fib@file:///users/Jaydon/Desktop/javascriptAssignment/scratchpad.js:32:14
+@Scratchpad/1:27:1
+*/
+/*
+Exception: ReferenceError: fibHelper is not defined
+recursiveFib@file:///users/Jaydon/Desktop/javascriptAssignment/scratchpad.js:55:9
+fib@file:///users/Jaydon/Desktop/javascriptAssignment/scratchpad.js:32:14
+@Scratchpad/1:27:1
+*/
