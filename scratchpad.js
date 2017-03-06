@@ -24,18 +24,18 @@ document.body.appendChild(primTriDiv);
 
 
 //run all three sequences
-fib(11, primFibDiv);
+// fib(11, primFibDiv);
 // pell(11, primPellDiv);
-// fib(11, primTriDiv);
+trib(11, primTriDiv);
 
-var fib = function(n, node) {
-  var tree = recursiveFib(n)
+function fib(n, node) {
+  var tree = recursiveFib(n);
   node.appendChild(tree.html);
   //node.style = "display: inline-block;";
   node.setAttribute('id', 'fib');
-}
+};
 
-var recursiveFib = function(n) {
+function recursiveFib(n) {
   var value;
   var div = document.createElement('div');
   div.setAttribute('class', 'fib');
@@ -50,7 +50,7 @@ var recursiveFib = function(n) {
     var p = document.createElement('p');
     p.textContent = 'Fib(' + n + ') = ' + value;
     div.appendChild(p)
-  } 
+  }
   else{
     var left = recursiveFib(n - 1);
     var clas = left.html.getAttribute('class');
@@ -59,6 +59,7 @@ var recursiveFib = function(n) {
     clas = right.html.getAttribute('class');
     right.html.setAttribute('class', clas + ' fib-right');
     value = left.value + right.value;
+    
     var p = document.createElement('p');
     p.textContent = 'Fib(' + n + ') = ' + value;
     div.appendChild(p);
@@ -85,7 +86,7 @@ function recursivePell(n){
     if(n === 0){
       value = 0;
     }
-    if(n=== 1){
+    if(n === 1){
       value = 1;
     }
     var p = document.createElement('p');
@@ -94,20 +95,70 @@ function recursivePell(n){
   }
   else{
     var left = recursivePell(n - 1);
+//     left = multiPell(left);
+    var divClass = left.html.getAttribute('class');
+    left.html.setAttribute('class', divClass + ' pell-left');
     var right = recursivePell(n - 2);
+    var divClass = right.html.getAttribute('class');
+    right.html.setAttribute('class', divClass + ' pell-left');
+    value = (left.value * 2) + right.value;
     
+    var p = document.createElement('p');
+    p.textContent = 'Pell(' + n + ') = ' + value;
+    pellDiv.appendChild(p);
+    pellDiv.appendChild(left.html);
+    pellDiv.appendChild(right.html);
+  }
+  return {
+    'value': value,
+    'html': pellDiv
   }
 }
 
-/*
-Exception: ReferenceError: fibHelper is not defined
-recursiveFib@file:///users/Jaydon/Desktop/javascriptAssignment/scratchpad.js:55:9
-fib@file:///users/Jaydon/Desktop/javascriptAssignment/scratchpad.js:32:14
-@Scratchpad/1:27:1
-*/
-/*
-Exception: ReferenceError: fibHelper is not defined
-recursiveFib@file:///users/Jaydon/Desktop/javascriptAssignment/scratchpad.js:55:9
-fib@file:///users/Jaydon/Desktop/javascriptAssignment/scratchpad.js:32:14
-@Scratchpad/1:27:1
-*/
+function trib(n, node) {
+  var tree = recursiveTrib(n);
+  node.appendChild(tree.html);
+  //node.style = "display: inline-block;";
+  node.setAttribute('id', 'trib');
+};
+
+function recursiveTrib(n) {
+  var value;
+  var div = document.createElement('div');
+  div.setAttribute('class', 'trib');
+  // leaf nodes aka. base case
+  if (n < 3) {
+    if (n === 0) {
+      value = 0;
+    } 
+    else if (n === 1 || n === 2) {
+      value = 1;
+    }
+    var p = document.createElement('p');
+    p.textContent = 'Trib(' + n + ') = ' + value;
+    div.appendChild(p)
+  }
+  else{
+    var left = recursiveTrib(n - 1);
+    var divClass = left.html.getAttribute('class');
+    left.html.setAttribute('class', divClass + ' trib-left');
+    var center = recursiveTrib(n - 2);
+    divClass = center.html.getAttribute('class');
+    center.html.setAttribute('class', divClass + ' trib-center');
+    var right = recursiveTrib(n - 3);
+    divClass = right.html.getAttribute('class');
+    right.html.setAttribute('class', divClass + ' trib-right');
+    value = left.value + center.value + right.value;
+    
+    var p = document.createElement('p');
+    p.textContent = 'Trib(' + n + ') = ' + value;
+    div.appendChild(p);
+    div.appendChild(left.html);
+    div.appendChild(center.html);
+    div.appendChild(right.html);
+  }
+  return {
+    'value': value,
+    'html': div
+  };
+}
