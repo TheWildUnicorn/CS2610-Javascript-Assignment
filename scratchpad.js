@@ -1,11 +1,3 @@
-/*
- * This is a JavaScript Scratchpad.
- *
- * Enter some JavaScript, then Right Click or choose from the Execute Menu:
- * 1. Run to evaluate the selected text (Cmd-R),
- * 2. Inspect to bring up an Object Inspector on the result (Cmd-I), or,
- * 3. Display to insert the result in a comment after the selection. (Cmd-L)
- */
 //set title
 document.title = 'Jaydon\'s Big Mathinessness';
 
@@ -28,10 +20,11 @@ fib(11, primFibDiv);
 pell(11, primPellDiv);
 trib(11, primTriDiv);
 
+//Let credit be given to Erik Falor whose work heavily influenced the following code
+
 function fib(n, node) {
   var tree = recursiveFib(n);
   node.appendChild(tree.html);
-  //node.style = "display: inline-block;";
   node.setAttribute('id', 'fib');
 };
 
@@ -53,11 +46,11 @@ function recursiveFib(n) {
   }
   else{
     var left = recursiveFib(n - 1);
-    var clas = left.html.getAttribute('class');
-    left.html.setAttribute('class', clas + ' leftChild');
+    var divClass = left.html.getAttribute('class');
+    left.html.setAttribute('class', divClass + ' leftChild');
     var right = recursiveFib(n - 2);
-    clas = right.html.getAttribute('class');
-    right.html.setAttribute('class', clas + ' rightChild');
+    className = right.html.getAttribute('class');
+    right.html.setAttribute('class', divClass + ' rightChild');
     value = left.value + right.value;
     
     var p = document.createElement('p');
@@ -95,7 +88,6 @@ function recursivePell(n){
   }
   else{
     var left = recursivePell(n - 1);
-//     left = multiPell(left);
     var divClass = left.html.getAttribute('class');
     left.html.setAttribute('class', divClass + ' leftChild');
     var right = recursivePell(n - 2);
@@ -118,7 +110,6 @@ function recursivePell(n){
 function trib(n, node) {
   var tree = recursiveTrib(n);
   node.appendChild(tree.html);
-  //node.style = "display: inline-block;";
   node.setAttribute('id', 'trib');
 };
 

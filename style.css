@@ -33,6 +33,7 @@
 .rightChild{
 	float: right;
 }
+/*This presents problems with Webkit browsers. There is no "float: center;" The div gets wrapped to the next line.*/
 .centerChild{
 	float: none;
 }
