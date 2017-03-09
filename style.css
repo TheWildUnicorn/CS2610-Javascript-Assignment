@@ -1,0 +1,38 @@
+.parentDiv{
+	border-style: solid;
+	border-color: white;
+	border-radius: 10px;
+	border-width: 2px;
+	margin: 10px;
+	padding: 3px;
+}
+#fib{
+	background-color: #BDFFFD;
+	width: 17000px;
+}
+#pell{
+	background-color: #7CFFC4;
+	width: 17500px;
+}
+#trib{
+	background-color: #9FFFF5;
+	width: 39000px;
+}
+
+.childDiv{
+	display: inline-block;
+	background-color: rgba(94,105,115,0.09);
+	border-radius: 5px;
+	margin: 10px;
+	padding: 3px;
+	text-align: center;
+}
+.leftChild{
+	float: left;
+}
+.rightChild{
+	float: right;
+}
+.centerChild{
+	float: none;
+}

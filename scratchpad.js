@@ -24,8 +24,8 @@ document.body.appendChild(primTriDiv);
 
 
 //run all three sequences
-// fib(11, primFibDiv);
-// pell(11, primPellDiv);
+fib(11, primFibDiv);
+pell(11, primPellDiv);
 trib(11, primTriDiv);
 
 function fib(n, node) {
@@ -38,7 +38,7 @@ function fib(n, node) {
 function recursiveFib(n) {
   var value;
   var div = document.createElement('div');
-  div.setAttribute('class', 'fib');
+  div.setAttribute('class', 'childDiv');
   // leaf nodes aka. base case
   if (n < 2) {
     if (n === 0) {
@@ -54,10 +54,10 @@ function recursiveFib(n) {
   else{
     var left = recursiveFib(n - 1);
     var clas = left.html.getAttribute('class');
-    left.html.setAttribute('class', clas + ' fib-left');
+    left.html.setAttribute('class', clas + ' leftChild');
     var right = recursiveFib(n - 2);
     clas = right.html.getAttribute('class');
-    right.html.setAttribute('class', clas + ' fib-right');
+    right.html.setAttribute('class', clas + ' rightChild');
     value = left.value + right.value;
     
     var p = document.createElement('p');
@@ -81,7 +81,7 @@ function pell(n, node){
 function recursivePell(n){
   var value;
   var pellDiv = document.createElement('div');
-  pellDiv.setAttribute('class', 'pell');
+  pellDiv.setAttribute('class', 'childDiv');
   if(n < 2){
     if(n === 0){
       value = 0;
@@ -97,10 +97,10 @@ function recursivePell(n){
     var left = recursivePell(n - 1);
 //     left = multiPell(left);
     var divClass = left.html.getAttribute('class');
-    left.html.setAttribute('class', divClass + ' pell-left');
+    left.html.setAttribute('class', divClass + ' leftChild');
     var right = recursivePell(n - 2);
     var divClass = right.html.getAttribute('class');
-    right.html.setAttribute('class', divClass + ' pell-left');
+    right.html.setAttribute('class', divClass + ' rightChild');
     value = (left.value * 2) + right.value;
     
     var p = document.createElement('p');
@@ -125,7 +125,7 @@ function trib(n, node) {
 function recursiveTrib(n) {
   var value;
   var div = document.createElement('div');
-  div.setAttribute('class', 'trib');
+  div.setAttribute('class', 'childDiv');
   // leaf nodes aka. base case
   if (n < 3) {
     if (n === 0) {
@@ -141,13 +141,13 @@ function recursiveTrib(n) {
   else{
     var left = recursiveTrib(n - 1);
     var divClass = left.html.getAttribute('class');
-    left.html.setAttribute('class', divClass + ' trib-left');
+    left.html.setAttribute('class', divClass + ' leftChild');
     var center = recursiveTrib(n - 2);
     divClass = center.html.getAttribute('class');
-    center.html.setAttribute('class', divClass + ' trib-center');
+    center.html.setAttribute('class', divClass + ' centerChild');
     var right = recursiveTrib(n - 3);
     divClass = right.html.getAttribute('class');
-    right.html.setAttribute('class', divClass + ' trib-right');
+    right.html.setAttribute('class', divClass + ' rightChild');
     value = left.value + center.value + right.value;
     
     var p = document.createElement('p');
