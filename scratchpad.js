@@ -21,7 +21,7 @@ function fib(n, node) {
   var tree = recursiveFib(n);
   node.appendChild(tree.html);
   node.setAttribute('id', 'fib');
-};
+}
 function recursiveFib(n) {
   var value;
   var div = document.createElement('div');
@@ -36,14 +36,14 @@ function recursiveFib(n) {
     }
     var p = document.createElement('p');
     p.textContent = 'Fib(' + n + ') = ' + value;
-    div.appendChild(p)
+    div.appendChild(p);
   } 
   else {
     var left = recursiveFib(n - 1);
     var divClass = left.html.getAttribute('class');
     left.html.setAttribute('class', divClass + ' leftChild');
     var right = recursiveFib(n - 2);
-    className = right.html.getAttribute('class');
+    divClass = right.html.getAttribute('class');
     right.html.setAttribute('class', divClass + ' rightChild');
     value = left.value + right.value;
     var p = document.createElement('p');
@@ -82,7 +82,7 @@ function recursivePell(n) {
     var divClass = left.html.getAttribute('class');
     left.html.setAttribute('class', divClass + ' leftChild');
     var right = recursivePell(n - 2);
-    var divClass = right.html.getAttribute('class');
+    divClass = right.html.getAttribute('class');
     right.html.setAttribute('class', divClass + ' rightChild');
     value = (left.value * 2) + right.value;
     var p = document.createElement('p');
@@ -94,13 +94,13 @@ function recursivePell(n) {
   return {
     'value': value,
     'html': pellDiv
-  }
+  };
 }
 function trib(n, node) {
   var tree = recursiveTrib(n);
   node.appendChild(tree.html);
   node.setAttribute('id', 'trib');
-};
+}
 function recursiveTrib(n) {
   var value;
   var div = document.createElement('div');
@@ -115,7 +115,7 @@ function recursiveTrib(n) {
     }
     var p = document.createElement('p');
     p.textContent = 'Trib(' + n + ') = ' + value;
-    div.appendChild(p)
+    div.appendChild(p);
   } 
   else {
     var left = recursiveTrib(n - 1);
